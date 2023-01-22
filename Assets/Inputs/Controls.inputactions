@@ -15,10 +15,19 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Right Stick Rotation",
+                    "name": "Direction Indicator Rotation Input",
                     "type": "PassThrough",
                     "id": "67762834-4fd8-4e56-b143-0996f918a961",
                     "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "99df7820-1638-4d79-a6df-d326d076d9ab",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
@@ -142,7 +151,29 @@
                     "interactions": "",
                     "processors": "StickDeadzone(min=0.25)",
                     "groups": "Gamepad",
-                    "action": "Right Stick Rotation",
+                    "action": "Direction Indicator Rotation Input",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d025f1e3-4bcf-4ba8-a78b-901ef7f16ad9",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard & Mouse",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4d3ba52c-0186-4f92-93ee-907fb97e9a6a",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

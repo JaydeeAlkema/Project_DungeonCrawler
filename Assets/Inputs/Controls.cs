@@ -37,10 +37,19 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Right Stick Rotation"",
+                    ""name"": ""Direction Indicator Rotation Input"",
                     ""type"": ""PassThrough"",
                     ""id"": ""67762834-4fd8-4e56-b143-0996f918a961"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""99df7820-1638-4d79-a6df-d326d076d9ab"",
+                    ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
@@ -164,7 +173,29 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": ""StickDeadzone(min=0.25)"",
                     ""groups"": ""Gamepad"",
-                    ""action"": ""Right Stick Rotation"",
+                    ""action"": ""Direction Indicator Rotation Input"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d025f1e3-4bcf-4ba8-a78b-901ef7f16ad9"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard & Mouse"",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4d3ba52c-0186-4f92-93ee-907fb97e9a6a"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -204,7 +235,8 @@ public partial class @Controls : IInputActionCollection2, IDisposable
         // CharacterControls
         m_CharacterControls = asset.FindActionMap("CharacterControls", throwIfNotFound: true);
         m_CharacterControls_Move = m_CharacterControls.FindAction("Move", throwIfNotFound: true);
-        m_CharacterControls_RightStickRotation = m_CharacterControls.FindAction("Right Stick Rotation", throwIfNotFound: true);
+        m_CharacterControls_DirectionIndicatorRotationInput = m_CharacterControls.FindAction("Direction Indicator Rotation Input", throwIfNotFound: true);
+        m_CharacterControls_Attack = m_CharacterControls.FindAction("Attack", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -265,13 +297,15 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_CharacterControls;
     private ICharacterControlsActions m_CharacterControlsActionsCallbackInterface;
     private readonly InputAction m_CharacterControls_Move;
-    private readonly InputAction m_CharacterControls_RightStickRotation;
+    private readonly InputAction m_CharacterControls_DirectionIndicatorRotationInput;
+    private readonly InputAction m_CharacterControls_Attack;
     public struct CharacterControlsActions
     {
         private @Controls m_Wrapper;
         public CharacterControlsActions(@Controls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_CharacterControls_Move;
-        public InputAction @RightStickRotation => m_Wrapper.m_CharacterControls_RightStickRotation;
+        public InputAction @DirectionIndicatorRotationInput => m_Wrapper.m_CharacterControls_DirectionIndicatorRotationInput;
+        public InputAction @Attack => m_Wrapper.m_CharacterControls_Attack;
         public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -284,9 +318,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMove;
-                @RightStickRotation.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnRightStickRotation;
-                @RightStickRotation.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnRightStickRotation;
-                @RightStickRotation.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnRightStickRotation;
+                @DirectionIndicatorRotationInput.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDirectionIndicatorRotationInput;
+                @DirectionIndicatorRotationInput.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDirectionIndicatorRotationInput;
+                @DirectionIndicatorRotationInput.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnDirectionIndicatorRotationInput;
+                @Attack.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnAttack;
             }
             m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
             if (instance != null)
@@ -294,9 +331,12 @@ public partial class @Controls : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @RightStickRotation.started += instance.OnRightStickRotation;
-                @RightStickRotation.performed += instance.OnRightStickRotation;
-                @RightStickRotation.canceled += instance.OnRightStickRotation;
+                @DirectionIndicatorRotationInput.started += instance.OnDirectionIndicatorRotationInput;
+                @DirectionIndicatorRotationInput.performed += instance.OnDirectionIndicatorRotationInput;
+                @DirectionIndicatorRotationInput.canceled += instance.OnDirectionIndicatorRotationInput;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
             }
         }
     }
@@ -322,6 +362,7 @@ public partial class @Controls : IInputActionCollection2, IDisposable
     public interface ICharacterControlsActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnRightStickRotation(InputAction.CallbackContext context);
+        void OnDirectionIndicatorRotationInput(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
 }

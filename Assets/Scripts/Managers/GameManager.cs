@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
 
 	private PlayerInput playerInput;
 
+	public static GameManager Instance { get => instance; set => instance = value; }
+	public DirectionIndicator DirectionIndicator { get => directionIndicator; set => directionIndicator = value; }
+
 	#region Unity Callbacks
 	private void Awake()
 	{

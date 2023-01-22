@@ -14,12 +14,12 @@ public class DirectionIndicator : MonoBehaviour
 	}
 	private void OnEnable()
 	{
-		controls.CharacterControls.RightStickRotation.performed += ReadStick;
-		controls.CharacterControls.RightStickRotation.Enable();
+		controls.CharacterControls.DirectionIndicatorRotationInput.performed += ReadStick;
+		controls.CharacterControls.DirectionIndicatorRotationInput.Enable();
 	}
 	private void OnDisable()
 	{
-		controls.CharacterControls.RightStickRotation.Disable();
+		controls.CharacterControls.DirectionIndicatorRotationInput.Disable();
 	}
 	private void Update()
 	{
