@@ -9,9 +9,8 @@ public class GameManager : MonoBehaviour
 	[BoxGroup("References"), SerializeField] private Crosshair crosshair;
 	[BoxGroup("References"), SerializeField] private DirectionIndicator directionIndicator;
 	[Space(10)]
-	[BoxGroup("Inputs"), SerializeField] private PlayerInput playerInput;
-	[BoxGroup("Inputs"), ReadOnly] private Controls controls;
 
+	private PlayerInput playerInput;
 
 	#region Unity Callbacks
 	private void Awake()
@@ -23,17 +22,16 @@ public class GameManager : MonoBehaviour
 		}
 		Cursor.visible = false;
 
-		controls = new Controls();
-
+		playerInput = GetComponent<PlayerInput>();
 		playerInput.onControlsChanged += OnControlschemeChange;
 		OnControlschemeChange(playerInput);
 	}
 	#endregion
 
 	#region Input System
-	private void OnControlschemeChange(PlayerInput obj)
+	private void OnControlschemeChange(PlayerInput context)
 	{
-		switch (obj.currentControlScheme)
+		switch (context.currentControlScheme)
 		{
 			case "Keyboard & Mouse":
 				crosshair.gameObject.SetActive(true);
