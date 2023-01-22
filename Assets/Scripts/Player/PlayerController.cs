@@ -17,22 +17,20 @@ namespace Project_Dungeon
 			rb2d = GetComponent<Rigidbody2D>();
 			controls = new Controls();
 		}
-
 		private void OnEnable()
 		{
 			controls.CharacterControls.Move.performed += Move;
 			controls.CharacterControls.Move.Enable();
 		}
-
 		private void OnDisable()
 		{
-			controls.CharacterControls.Disable();
+			controls.CharacterControls.Move.Disable();
 		}
 		#endregion
 
-		private void Move(InputAction.CallbackContext obj)
+		private void Move(InputAction.CallbackContext context)
 		{
-			rb2d.velocity = obj.ReadValue<Vector2>() * movementSpeed;
+			rb2d.velocity = context.ReadValue<Vector2>() * movementSpeed;
 		}
 	}
 }

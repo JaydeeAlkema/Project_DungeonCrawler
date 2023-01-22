@@ -50,3 +50,6 @@ TagManager:
   - name: Character
     uniqueID: 2138794695
     locked: 0
+  - name: Always on Top
+    uniqueID: 1397270225
+    locked: 0
