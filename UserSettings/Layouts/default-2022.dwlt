@@ -74,7 +74,7 @@ MonoBehaviour:
   m_MinSize: {x: 100, y: 200}
   m_MaxSize: {x: 8096, y: 16192}
   vertical: 1
-  controlID: 178
+  controlID: 111
 --- !u!114 &4
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -99,8 +99,9 @@ MonoBehaviour:
   m_ActualView: {fileID: 20}
   m_Panes:
   - {fileID: 20}
+  - {fileID: 13}
   m_Selected: 0
-  m_LastSelected: 0
+  m_LastSelected: 1
 --- !u!114 &5
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -274,7 +275,7 @@ MonoBehaviour:
   m_MinSize: {x: 300, y: 200}
   m_MaxSize: {x: 24288, y: 16192}
   vertical: 0
-  controlID: 19
+  controlID: 110
 --- !u!114 &12
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -285,7 +286,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 1
   m_Script: {fileID: 12006, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: GameView
+  m_Name: SceneView
   m_EditorClassIdentifier: 
   m_Children: []
   m_Position:
@@ -296,16 +297,15 @@ MonoBehaviour:
     height: 708
   m_MinSize: {x: 201, y: 221}
   m_MaxSize: {x: 4001, y: 4021}
-  m_ActualView: {fileID: 17}
+  m_ActualView: {fileID: 16}
   m_Panes:
   - {fileID: 16}
   - {fileID: 17}
   - {fileID: 18}
   - {fileID: 14}
   - {fileID: 15}
-  - {fileID: 13}
-  m_Selected: 1
-  m_LastSelected: 3
+  m_Selected: 0
+  m_LastSelected: 1
 --- !u!114 &13
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -327,9 +327,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 73
+    y: 781
     width: 1183
-    height: 687
+    height: 228
   m_ViewDataDictionary: {fileID: 0}
   m_OverlayCanvas:
     m_LastAppliedPresetName: Default
@@ -358,9 +358,9 @@ MonoBehaviour:
     m_SearchString: 
   m_ActionsTreeState:
     scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: b6d3a53a
-    m_LastClickedID: 983946166
-    m_ExpandedIDs: 9e50c5a0c3be52ffef6cbb230be8c62f257788500673b9521d92bb62db4cd07a
+    m_SelectedIDs: 8034a317
+    m_LastClickedID: 396571776
+    m_ExpandedIDs: 9e50c5a0a43c80dec3be52ffef6cbb230be8c62f257788500673b9526ec7ac591d92bb62
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -382,7 +382,7 @@ MonoBehaviour:
     m_AdvancedDropdownState:
       states:
       - itemId: 371857150
-        selectedIndex: 4
+        selectedIndex: 5
         scroll: {x: 0, y: 0}
       - itemId: 656259478
         selectedIndex: 0
@@ -409,7 +409,7 @@ MonoBehaviour:
         selectedIndex: 0
         scroll: {x: 0, y: 0}
       - itemId: 82801685
-        selectedIndex: 1
+        selectedIndex: 2
         scroll: {x: 0, y: 0}
       - itemId: -656690626
         selectedIndex: 0
@@ -418,6 +418,24 @@ MonoBehaviour:
         selectedIndex: -1
         scroll: {x: 0, y: 0}
       - itemId: -1273337413
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: -2022221135
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: -376880915
+        selectedIndex: -1
+        scroll: {x: 0, y: 0}
+      - itemId: 1581935634
+        selectedIndex: 0
+        scroll: {x: 0, y: 0}
+      - itemId: -1225648900
+        selectedIndex: 0
+        scroll: {x: 0, y: 0}
+      - itemId: 403810634
+        selectedIndex: 0
+        scroll: {x: 0, y: 0}
+      - itemId: -298396491
         selectedIndex: -1
         scroll: {x: 0, y: 0}
     m_ManualPathEditMode: 0
@@ -432,10 +450,14 @@ MonoBehaviour:
       \"expectedControlType\": \"Vector2\",\n                    \"processors\":
       \"\",\n                    \"interactions\": \"\",\n                    \"initialStateCheck\":
       false\n                },\n                {\n                    \"name\":
-      \"Cursor\",\n                    \"type\": \"Value\",\n                   
-      \"id\": \"ede60973-4aab-4c40-8409-da6b57a2bae5\",\n                    \"expectedControlType\":
+      \"Direction Indicator Rotation Input\",\n                    \"type\": \"PassThrough\",\n                   
+      \"id\": \"67762834-4fd8-4e56-b143-0996f918a961\",\n                    \"expectedControlType\":
       \"Vector2\",\n                    \"processors\": \"\",\n                   
-      \"interactions\": \"\",\n                    \"initialStateCheck\": true\n               
+      \"interactions\": \"\",\n                    \"initialStateCheck\": false\n               
+      },\n                {\n                    \"name\": \"Attack\",\n                   
+      \"type\": \"Button\",\n                    \"id\": \"99df7820-1638-4d79-a6df-d326d076d9ab\",\n                   
+      \"expectedControlType\": \"Button\",\n                    \"processors\": \"\",\n                   
+      \"interactions\": \"\",\n                    \"initialStateCheck\": false\n               
       }\n            ],\n            \"bindings\": [\n                {\n                   
       \"name\": \"KBM\",\n                    \"id\": \"ad6bd4aa-a469-403c-9466-66968c5ae101\",\n                   
       \"path\": \"2DVector\",\n                    \"interactions\": \"\",\n                   
@@ -490,20 +512,31 @@ MonoBehaviour:
       \"processors\": \"\",\n                    \"groups\": \"Gamepad\",\n                   
       \"action\": \"Move\",\n                    \"isComposite\": false,\n                   
       \"isPartOfComposite\": false\n                },\n                {\n                   
-      \"name\": \"\",\n                    \"id\": \"d4e79f0e-5585-4778-9bbe-1051a6a72af8\",\n                   
-      \"path\": \"<Mouse>/position\",\n                    \"interactions\": \"\",\n                   
+      \"name\": \"\",\n                    \"id\": \"96988e23-b175-4ff6-8478-cf3a35225ac2\",\n                   
+      \"path\": \"<Gamepad>/rightStick\",\n                    \"interactions\":
+      \"\",\n                    \"processors\": \"StickDeadzone(min=0.25)\",\n                   
+      \"groups\": \"Gamepad\",\n                    \"action\": \"Direction Indicator
+      Rotation Input\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                },\n                {\n                   
+      \"name\": \"\",\n                    \"id\": \"d025f1e3-4bcf-4ba8-a78b-901ef7f16ad9\",\n                   
+      \"path\": \"<Mouse>/leftButton\",\n                    \"interactions\": \"\",\n                   
       \"processors\": \"\",\n                    \"groups\": \"Keyboard & Mouse\",\n                   
-      \"action\": \"Cursor\",\n                    \"isComposite\": false,\n                   
-      \"isPartOfComposite\": false\n                }\n            ]\n        }\n   
-      ],\n    \"controlSchemes\": [\n        {\n            \"name\": \"Keyboard
-      & Mouse\",\n            \"bindingGroup\": \"Keyboard & Mouse\",\n           
-      \"devices\": [\n                {\n                    \"devicePath\": \"<Keyboard>\",\n                   
-      \"isOptional\": false,\n                    \"isOR\": false\n               
-      },\n                {\n                    \"devicePath\": \"<Mouse>\",\n                   
-      \"isOptional\": false,\n                    \"isOR\": false\n               
-      }\n            ]\n        },\n        {\n            \"name\": \"Gamepad\",\n           
-      \"bindingGroup\": \"Gamepad\",\n            \"devices\": [\n               
-      {\n                    \"devicePath\": \"<Gamepad>\",\n                   
+      \"action\": \"Attack\",\n                    \"isComposite\": false,\n                   
+      \"isPartOfComposite\": false\n                },\n                {\n                   
+      \"name\": \"\",\n                    \"id\": \"4d3ba52c-0186-4f92-93ee-907fb97e9a6a\",\n                   
+      \"path\": \"<Gamepad>/buttonSouth\",\n                    \"interactions\":
+      \"\",\n                    \"processors\": \"\",\n                    \"groups\":
+      \"Gamepad\",\n                    \"action\": \"Attack\",\n                   
+      \"isComposite\": false,\n                    \"isPartOfComposite\": false\n               
+      }\n            ]\n        }\n    ],\n    \"controlSchemes\": [\n        {\n           
+      \"name\": \"Keyboard & Mouse\",\n            \"bindingGroup\": \"Keyboard &
+      Mouse\",\n            \"devices\": [\n                {\n                   
+      \"devicePath\": \"<Keyboard>\",\n                    \"isOptional\": false,\n                   
+      \"isOR\": false\n                },\n                {\n                   
+      \"devicePath\": \"<Mouse>\",\n                    \"isOptional\": false,\n                   
+      \"isOR\": false\n                }\n            ]\n        },\n        {\n           
+      \"name\": \"Gamepad\",\n            \"bindingGroup\": \"Gamepad\",\n           
+      \"devices\": [\n                {\n                    \"devicePath\": \"<Gamepad>\",\n                   
       \"isOptional\": false,\n                    \"isOR\": false\n               
       }\n            ]\n        }\n    ]\n}"
     m_IsDirty: 0
@@ -907,9 +940,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 0.66096437, y: -2.272904, z: -11.878586}
+    m_Target: {x: -0.4472252, y: 0.23811749, z: 0.0061426163}
     speed: 2
-    m_Value: {x: 0.66096437, y: -2.272904, z: -11.878586}
+    m_Value: {x: -0.4472252, y: 0.23811749, z: 0.0061426163}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -959,9 +992,9 @@ MonoBehaviour:
     speed: 2
     m_Value: {x: 0, y: 0, z: 0, w: 1}
   m_Size:
-    m_Target: 29.342283
+    m_Target: 3.919868
     speed: 2
-    m_Value: 29.342283
+    m_Value: 3.919868
   m_Ortho:
     m_Target: 1
     speed: 2
@@ -1033,7 +1066,7 @@ MonoBehaviour:
   m_VSyncEnabled: 0
   m_PlayFocused: 0
   m_Gizmos: 0
-  m_Stats: 0
+  m_Stats: 1
   m_SelectedSizes: 03000000000000000000000000000000000000000000000000000000000000000000000000000000
   m_ZoomArea:
     m_HRangeLocked: 0
@@ -1052,7 +1085,7 @@ MonoBehaviour:
     m_HSlider: 0
     m_VSlider: 0
     m_IgnoreScrollWheelUntilClicked: 0
-    m_EnableMouseInput: 1
+    m_EnableMouseInput: 0
     m_EnableSliderZoomHorizontal: 0
     m_EnableSliderZoomVertical: 0
     m_UniformScale: 1
@@ -1166,9 +1199,9 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 20ff0000
-      m_LastClickedID: 65312
-      m_ExpandedIDs: 2a49ffffc6e9ffff00fbffffb66f0000c26f0000de6f00007c0001006005010008070100
+      m_SelectedIDs: ae710000
+      m_LastClickedID: 29102
+      m_ExpandedIDs: 2870fdff467ffdffba95fdffbe95fdff8831fefffaaefeff1684ffff1a84ffff1e84ffff08fbffff5075000026780000dc7b0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -1233,22 +1266,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Project Dungeon/Scenes
+    - Assets/Prefabs/Attacks
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 96
   m_LastFolders:
-  - Assets/Project Dungeon/Scenes
+  - Assets/Prefabs/Attacks
   m_LastFoldersGridSize: 96
-  m_LastProjectPath: E:\Git Repos\Playground 2D
+  m_LastProjectPath: E:\Git Repos\Project_DungeonCrawler
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 84}
-    m_SelectedIDs: c4710000
-    m_LastClickedID: 29124
-    m_ExpandedIDs: 000000002a700000bc710000c6710000c871000000ca9a3b
+    scrollPos: {x: 0, y: 76}
+    m_SelectedIDs: d44f0400
+    m_LastClickedID: 282580
+    m_ExpandedIDs: 00000000b47e0000b87e0000ba7e0000ac80000002c30000c8c80000aacf000032d7000032530400
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1276,7 +1309,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 000000002a700000
+    m_ExpandedIDs: 00000000b47e0000b67e0000b87e0000ba7e0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1304,7 +1337,7 @@ MonoBehaviour:
     m_SelectedInstanceIDs: 
     m_LastClickedInstanceID: 0
     m_HadKeyboardFocusLastEvent: 1
-    m_ExpandedInstanceIDs: c6230000
+    m_ExpandedInstanceIDs: c6230000aa8f0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
