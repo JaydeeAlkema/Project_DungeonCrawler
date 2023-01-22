@@ -15,15 +15,6 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Mouse Position",
-                    "type": "PassThrough",
-                    "id": "ede60973-4aab-4c40-8409-da6b57a2bae5",
-                    "expectedControlType": "Vector2",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": true
-                },
-                {
                     "name": "Right Stick Rotation",
                     "type": "PassThrough",
                     "id": "67762834-4fd8-4e56-b143-0996f918a961",
@@ -146,21 +137,10 @@
                 },
                 {
                     "name": "",
-                    "id": "d4e79f0e-5585-4778-9bbe-1051a6a72af8",
-                    "path": "<Mouse>/position",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "Keyboard & Mouse",
-                    "action": "Mouse Position",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "96988e23-b175-4ff6-8478-cf3a35225ac2",
                     "path": "<Gamepad>/rightStick",
                     "interactions": "",
-                    "processors": "StickDeadzone",
+                    "processors": "StickDeadzone(min=0.25)",
                     "groups": "Gamepad",
                     "action": "Right Stick Rotation",
                     "isComposite": false,

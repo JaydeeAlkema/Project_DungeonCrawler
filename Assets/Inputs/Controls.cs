@@ -15,14 +15,12 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-namespace Project_Dungeon
+public partial class @Controls : IInputActionCollection2, IDisposable
 {
-    public partial class @Controls : IInputActionCollection2, IDisposable
+    public InputActionAsset asset { get; }
+    public @Controls()
     {
-        public InputActionAsset asset { get; }
-        public @Controls()
-        {
-            asset = InputActionAsset.FromJson(@"{
+        asset = InputActionAsset.FromJson(@"{
     ""name"": ""Controls"",
     ""maps"": [
         {
@@ -37,15 +35,6 @@ namespace Project_Dungeon
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Mouse Position"",
-                    ""type"": ""PassThrough"",
-                    ""id"": ""ede60973-4aab-4c40-8409-da6b57a2bae5"",
-                    ""expectedControlType"": ""Vector2"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Right Stick Rotation"",
@@ -170,21 +159,10 @@ namespace Project_Dungeon
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d4e79f0e-5585-4778-9bbe-1051a6a72af8"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": ""Keyboard & Mouse"",
-                    ""action"": ""Mouse Position"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""96988e23-b175-4ff6-8478-cf3a35225ac2"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": ""StickDeadzone"",
+                    ""processors"": ""StickDeadzone(min=0.25)"",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Right Stick Rotation"",
                     ""isComposite"": false,
@@ -223,138 +201,127 @@ namespace Project_Dungeon
         }
     ]
 }");
-            // CharacterControls
-            m_CharacterControls = asset.FindActionMap("CharacterControls", throwIfNotFound: true);
-            m_CharacterControls_Move = m_CharacterControls.FindAction("Move", throwIfNotFound: true);
-            m_CharacterControls_MousePosition = m_CharacterControls.FindAction("Mouse Position", throwIfNotFound: true);
-            m_CharacterControls_RightStickRotation = m_CharacterControls.FindAction("Right Stick Rotation", throwIfNotFound: true);
-        }
-
-        public void Dispose()
-        {
-            UnityEngine.Object.Destroy(asset);
-        }
-
-        public InputBinding? bindingMask
-        {
-            get => asset.bindingMask;
-            set => asset.bindingMask = value;
-        }
-
-        public ReadOnlyArray<InputDevice>? devices
-        {
-            get => asset.devices;
-            set => asset.devices = value;
-        }
-
-        public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
-
-        public bool Contains(InputAction action)
-        {
-            return asset.Contains(action);
-        }
-
-        public IEnumerator<InputAction> GetEnumerator()
-        {
-            return asset.GetEnumerator();
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            return GetEnumerator();
-        }
-
-        public void Enable()
-        {
-            asset.Enable();
-        }
-
-        public void Disable()
-        {
-            asset.Disable();
-        }
-        public IEnumerable<InputBinding> bindings => asset.bindings;
-
-        public InputAction FindAction(string actionNameOrId, bool throwIfNotFound = false)
-        {
-            return asset.FindAction(actionNameOrId, throwIfNotFound);
-        }
-        public int FindBinding(InputBinding bindingMask, out InputAction action)
-        {
-            return asset.FindBinding(bindingMask, out action);
-        }
-
         // CharacterControls
-        private readonly InputActionMap m_CharacterControls;
-        private ICharacterControlsActions m_CharacterControlsActionsCallbackInterface;
-        private readonly InputAction m_CharacterControls_Move;
-        private readonly InputAction m_CharacterControls_MousePosition;
-        private readonly InputAction m_CharacterControls_RightStickRotation;
-        public struct CharacterControlsActions
+        m_CharacterControls = asset.FindActionMap("CharacterControls", throwIfNotFound: true);
+        m_CharacterControls_Move = m_CharacterControls.FindAction("Move", throwIfNotFound: true);
+        m_CharacterControls_RightStickRotation = m_CharacterControls.FindAction("Right Stick Rotation", throwIfNotFound: true);
+    }
+
+    public void Dispose()
+    {
+        UnityEngine.Object.Destroy(asset);
+    }
+
+    public InputBinding? bindingMask
+    {
+        get => asset.bindingMask;
+        set => asset.bindingMask = value;
+    }
+
+    public ReadOnlyArray<InputDevice>? devices
+    {
+        get => asset.devices;
+        set => asset.devices = value;
+    }
+
+    public ReadOnlyArray<InputControlScheme> controlSchemes => asset.controlSchemes;
+
+    public bool Contains(InputAction action)
+    {
+        return asset.Contains(action);
+    }
+
+    public IEnumerator<InputAction> GetEnumerator()
+    {
+        return asset.GetEnumerator();
+    }
+
+    IEnumerator IEnumerable.GetEnumerator()
+    {
+        return GetEnumerator();
+    }
+
+    public void Enable()
+    {
+        asset.Enable();
+    }
+
+    public void Disable()
+    {
+        asset.Disable();
+    }
+    public IEnumerable<InputBinding> bindings => asset.bindings;
+
+    public InputAction FindAction(string actionNameOrId, bool throwIfNotFound = false)
+    {
+        return asset.FindAction(actionNameOrId, throwIfNotFound);
+    }
+    public int FindBinding(InputBinding bindingMask, out InputAction action)
+    {
+        return asset.FindBinding(bindingMask, out action);
+    }
+
+    // CharacterControls
+    private readonly InputActionMap m_CharacterControls;
+    private ICharacterControlsActions m_CharacterControlsActionsCallbackInterface;
+    private readonly InputAction m_CharacterControls_Move;
+    private readonly InputAction m_CharacterControls_RightStickRotation;
+    public struct CharacterControlsActions
+    {
+        private @Controls m_Wrapper;
+        public CharacterControlsActions(@Controls wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_CharacterControls_Move;
+        public InputAction @RightStickRotation => m_Wrapper.m_CharacterControls_RightStickRotation;
+        public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(CharacterControlsActions set) { return set.Get(); }
+        public void SetCallbacks(ICharacterControlsActions instance)
         {
-            private @Controls m_Wrapper;
-            public CharacterControlsActions(@Controls wrapper) { m_Wrapper = wrapper; }
-            public InputAction @Move => m_Wrapper.m_CharacterControls_Move;
-            public InputAction @MousePosition => m_Wrapper.m_CharacterControls_MousePosition;
-            public InputAction @RightStickRotation => m_Wrapper.m_CharacterControls_RightStickRotation;
-            public InputActionMap Get() { return m_Wrapper.m_CharacterControls; }
-            public void Enable() { Get().Enable(); }
-            public void Disable() { Get().Disable(); }
-            public bool enabled => Get().enabled;
-            public static implicit operator InputActionMap(CharacterControlsActions set) { return set.Get(); }
-            public void SetCallbacks(ICharacterControlsActions instance)
+            if (m_Wrapper.m_CharacterControlsActionsCallbackInterface != null)
             {
-                if (m_Wrapper.m_CharacterControlsActionsCallbackInterface != null)
-                {
-                    @Move.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMove;
-                    @Move.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMove;
-                    @Move.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMove;
-                    @MousePosition.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMousePosition;
-                    @MousePosition.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMousePosition;
-                    @MousePosition.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMousePosition;
-                    @RightStickRotation.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnRightStickRotation;
-                    @RightStickRotation.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnRightStickRotation;
-                    @RightStickRotation.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnRightStickRotation;
-                }
-                m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
-                if (instance != null)
-                {
-                    @Move.started += instance.OnMove;
-                    @Move.performed += instance.OnMove;
-                    @Move.canceled += instance.OnMove;
-                    @MousePosition.started += instance.OnMousePosition;
-                    @MousePosition.performed += instance.OnMousePosition;
-                    @MousePosition.canceled += instance.OnMousePosition;
-                    @RightStickRotation.started += instance.OnRightStickRotation;
-                    @RightStickRotation.performed += instance.OnRightStickRotation;
-                    @RightStickRotation.canceled += instance.OnRightStickRotation;
-                }
+                @Move.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnMove;
+                @RightStickRotation.started -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnRightStickRotation;
+                @RightStickRotation.performed -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnRightStickRotation;
+                @RightStickRotation.canceled -= m_Wrapper.m_CharacterControlsActionsCallbackInterface.OnRightStickRotation;
+            }
+            m_Wrapper.m_CharacterControlsActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
+                @RightStickRotation.started += instance.OnRightStickRotation;
+                @RightStickRotation.performed += instance.OnRightStickRotation;
+                @RightStickRotation.canceled += instance.OnRightStickRotation;
             }
         }
-        public CharacterControlsActions @CharacterControls => new CharacterControlsActions(this);
-        private int m_KeyboardMouseSchemeIndex = -1;
-        public InputControlScheme KeyboardMouseScheme
+    }
+    public CharacterControlsActions @CharacterControls => new CharacterControlsActions(this);
+    private int m_KeyboardMouseSchemeIndex = -1;
+    public InputControlScheme KeyboardMouseScheme
+    {
+        get
         {
-            get
-            {
-                if (m_KeyboardMouseSchemeIndex == -1) m_KeyboardMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard & Mouse");
-                return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
-            }
+            if (m_KeyboardMouseSchemeIndex == -1) m_KeyboardMouseSchemeIndex = asset.FindControlSchemeIndex("Keyboard & Mouse");
+            return asset.controlSchemes[m_KeyboardMouseSchemeIndex];
         }
-        private int m_GamepadSchemeIndex = -1;
-        public InputControlScheme GamepadScheme
+    }
+    private int m_GamepadSchemeIndex = -1;
+    public InputControlScheme GamepadScheme
+    {
+        get
         {
-            get
-            {
-                if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
-                return asset.controlSchemes[m_GamepadSchemeIndex];
-            }
+            if (m_GamepadSchemeIndex == -1) m_GamepadSchemeIndex = asset.FindControlSchemeIndex("Gamepad");
+            return asset.controlSchemes[m_GamepadSchemeIndex];
         }
-        public interface ICharacterControlsActions
-        {
-            void OnMove(InputAction.CallbackContext context);
-            void OnMousePosition(InputAction.CallbackContext context);
-            void OnRightStickRotation(InputAction.CallbackContext context);
-        }
+    }
+    public interface ICharacterControlsActions
+    {
+        void OnMove(InputAction.CallbackContext context);
+        void OnRightStickRotation(InputAction.CallbackContext context);
     }
 }

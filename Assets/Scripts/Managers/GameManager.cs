@@ -1,5 +1,4 @@
 using NaughtyAttributes;
-using Project_Dungeon;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -10,7 +9,8 @@ public class GameManager : MonoBehaviour
 	[BoxGroup("References"), SerializeField] private Crosshair crosshair;
 	[BoxGroup("References"), SerializeField] private DirectionIndicator directionIndicator;
 	[Space(10)]
-	[BoxGroup("Inputs")] private Controls controls;
+	[BoxGroup("Inputs"), SerializeField] private PlayerInput playerInput;
+	[BoxGroup("Inputs"), ReadOnly] private Controls controls;
 
 
 	#region Unity Callbacks
@@ -25,29 +25,27 @@ public class GameManager : MonoBehaviour
 
 		controls = new Controls();
 
-		controls.CharacterControls.MousePosition.performed += OnMousePositionInput;
-		controls.CharacterControls.MousePosition.Enable();
-
-		controls.CharacterControls.RightStickRotation.performed += OnRightStickInput;
-		controls.CharacterControls.RightStickRotation.Enable();
-	}
-	private void Start()
-	{
-		crosshair.gameObject.SetActive(false);
-		directionIndicator.gameObject.SetActive(false);
+		playerInput.onControlsChanged += OnControlschemeChange;
+		OnControlschemeChange(playerInput);
 	}
 	#endregion
 
-	#region Controls Events
-	private void OnMousePositionInput(InputAction.CallbackContext obj)
+	#region Input System
+	private void OnControlschemeChange(PlayerInput obj)
 	{
-		crosshair.gameObject.SetActive(true);
-		directionIndicator.gameObject.SetActive(false);
-	}
-	private void OnRightStickInput(InputAction.CallbackContext obj)
-	{
-		crosshair.gameObject.SetActive(false);
-		directionIndicator.gameObject.SetActive(true);
+		switch (obj.currentControlScheme)
+		{
+			case "Keyboard & Mouse":
+				crosshair.gameObject.SetActive(true);
+				directionIndicator.gameObject.SetActive(false);
+				break;
+			case "Gamepad":
+				crosshair.gameObject.SetActive(false);
+				directionIndicator.gameObject.SetActive(true);
+				break;
+			default:
+				break;
+		}
 	}
 	#endregion
 }

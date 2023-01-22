@@ -333,6 +333,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 872182156}
   directionIndicator: {fileID: 1260752331}
+  playerInput: {fileID: 1816788428}
 --- !u!1 &864677655
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,7 +1399,7 @@ GameObject:
   - component: {fileID: 1816788429}
   - component: {fileID: 1816788428}
   m_Layer: 0
-  m_Name: Input Actions
+  m_Name: Player Input
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
