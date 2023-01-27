@@ -38,5 +38,8 @@ public class Player : Creature
 	private void Attack(InputAction.CallbackContext context)
 	{
 		Instantiate(attacks[currentAttackIndex], transform.position, directionIndicator.transform.rotation, transform);
+
+		currentAttackIndex++;
+		if (currentAttackIndex >= attacks.Count) currentAttackIndex = 0;
 	}
 }
